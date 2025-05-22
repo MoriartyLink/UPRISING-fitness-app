@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+
+<?import java.lang.String?>
+<VBox alignment="CENTER" spacing="20" styleClass="edit-profile-container" stylesheets="@edit_profile.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.uprising.EditProfileController">
+    <fx:define>
+        <ToggleGroup fx:id="genderGroup" />
+        <ToggleGroup fx:id="heightUnitGroup" />
+        <ToggleGroup fx:id="weightUnitGroup" />
+    </fx:define>
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+
+    <!-- Title -->
+    <Label text="Edit Profile" styleClass="label-title">
+        <font>
+            <Font name="System Bold" size="24.0" />
+        </font>
+    </Label>
+
+    <!-- Form Grid -->
+    <GridPane hgap="15" vgap="15">
+        <!-- Username -->
+        <Label text="Username:" styleClass="label" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+        <TextField fx:id="usernameField" styleClass="text-field" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+        <!-- Phone Number -->
+        <Label text="Phone Number:" styleClass="label" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+        <TextField fx:id="phoneField" styleClass="text-field" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+        <!-- Email -->
+        <Label text="Email:" styleClass="label" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+        <TextField fx:id="emailField" styleClass="text-field" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+        <!-- Gender -->
+        <Label text="Gender:" styleClass="label" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+        <HBox spacing="10" GridPane.rowIndex="3" GridPane.columnIndex="1">
+            <RadioButton fx:id="maleRadio" text="Male" styleClass="radio-button" toggleGroup="$genderGroup" />
+            <RadioButton fx:id="femaleRadio" text="Female" styleClass="radio-button" toggleGroup="$genderGroup" />
+            <RadioButton fx:id="otherRadio" text="Other" styleClass="radio-button" toggleGroup="$genderGroup" />
+        </HBox>
+
+        <!-- Date of Birth -->
+        <Label text="Date of Birth:" styleClass="label" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+        <DatePicker fx:id="birthDatePicker" styleClass="date-picker" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+
+        <!-- Height -->
+        <Label text="Height:" styleClass="label" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+        <HBox spacing="10" GridPane.rowIndex="5" GridPane.columnIndex="1">
+            <TextField fx:id="heightFieldCm" promptText="cm" styleClass="text-field" prefWidth="100.0" />
+            <TextField fx:id="heightFieldFt" promptText="ft" styleClass="text-field" prefWidth="70.0" managed="false" visible="false" />
+            <TextField fx:id="heightFieldIn" promptText="in" styleClass="text-field" prefWidth="70.0" managed="false" visible="false" />
+            <ToggleButton fx:id="cmButton" text="cm" selected="true" styleClass="toggle-button" toggleGroup="$heightUnitGroup" />
+            <ToggleButton fx:id="ftButton" text="ft" styleClass="toggle-button" toggleGroup="$heightUnitGroup" />
+        </HBox>
+
+        <!-- Weight -->
+        <Label text="Weight:" styleClass="label" GridPane.rowIndex="6" GridPane.columnIndex="0" />
+        <HBox spacing="10" GridPane.rowIndex="6" GridPane.columnIndex="1">
+            <TextField fx:id="weightField" promptText="kg" styleClass="text-field" prefWidth="100.0" />
+            <ToggleButton fx:id="kgButton" text="kg" selected="true" styleClass="toggle-button" toggleGroup="$weightUnitGroup" />
+            <ToggleButton fx:id="lbButton" text="lb" styleClass="toggle-button" toggleGroup="$weightUnitGroup" />
+        </HBox>
+
+        <!-- Goal -->
+        <Label text="Goal:" styleClass="label" GridPane.rowIndex="7" GridPane.columnIndex="0" />
+        <ComboBox fx:id="goalComboBox" styleClass="combo-box" GridPane.rowIndex="7" GridPane.columnIndex="1">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Build Muscle Mass" />
+                    <String fx:value="Build Strength" />
+                    <String fx:value="Get Lean and Define" />
+                    <String fx:value="Weight Loss" />
+                    <String fx:value="Boost Sport Performance" />
+                    <String fx:value="Improve Health" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <!-- Workout Days per Week -->
+        <Label text="Workout Days per Week:" styleClass="label" GridPane.rowIndex="8" GridPane.columnIndex="0" />
+        <ComboBox fx:id="daysPerWeekComboBox" styleClass="combo-box" GridPane.rowIndex="8" GridPane.columnIndex="1">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="1" />
+                    <String fx:value="2" />
+                    <String fx:value="3" />
+                    <String fx:value="4" />
+                    <String fx:value="5" />
+                    <String fx:value="6" />
+                    <String fx:value="7" />
+                    <String fx:value="Everyday" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </GridPane>
+
+    <!-- Error Label -->
+    <Label fx:id="errorLabel" styleClass="error-label" />
+
+    <!-- Buttons -->
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="Save" onAction="#handleSave" styleClass="button" />
+        <Button text="Cancel" onAction="#handleCancel" styleClass="button" />
+    </HBox>
+</VBox>
