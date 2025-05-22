@@ -1,0 +1,50 @@
+/* Main BorderPane background with gradient */
+.border-pane {
+    -fx-background-color: linear-gradient(to bottom right, #6666FF, #66BBA8);
+}
+
+/* Header styling */
+.header {
+    -fx-background-color: #333333; /* Dark gray-black for contrast */
+    -fx-padding: 10px;
+}
+
+.title {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 10px 0 20px; /* Space from back button */
+}
+
+/* Back button styling */
+.back-button {
+    -fx-background-color: #6666FF; /* Theme blue */
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5;
+}
+
+.back-button:hover {
+    -fx-background-color: #5555EE; /* Slightly lighter blue on hover */
+}
+
+/* Guideline card styling */
+.guideline-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5); /* Subtle shadow */
+    -fx-padding: 20px;
+}
+
+.guideline-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.guideline-text {
+    -fx-font-size: 14px;
+    -fx-text-fill: #555555;
+}

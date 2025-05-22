@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="borderPane" prefHeight="583.0" prefWidth="835.0" stylesheets="@exerciseDemo_style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.uprising.Workout.ExerciseDemoController">
+   <top>
+      <HBox alignment="CENTER_LEFT" styleClass="header">
+         <children>
+            <Button fx:id="backButton" onAction="#handleBack" styleClass="back-button" text="Back" />
+            <Label fx:id="exerciseTitleLabel" styleClass="title" text="Exercise Demo" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <ImageView fx:id="exerciseGifView" fitHeight="486.0" fitWidth="528.0" preserveRatio="true" />
+   </center>
+   <right>
+      <VBox fx:id="guidelinePane" prefWidth="300.0" spacing="10" styleClass="guideline-pane">
+         <children>
+            <Label styleClass="guideline-title" text="Guidelines" />
+            <Label fx:id="guidelineLabel" styleClass="guideline-text" wrapText="true" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
