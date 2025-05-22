@@ -1,0 +1,36 @@
+
+/*.button:hover {*/
+/*    -fx-background-color: #3cb5c8;*/
+/*}*/
+.root {
+    -fx-background-color: transparent;
+}
+#body {
+    -fx-background-radius: 20;
+    -fx-background-color:  linear-gradient(to bottom right,  #66BBA8,#4188e8);
+}
+
+.toggle-button{
+    -fx-background-color: #defaff;
+    -fx-text-fill:  linear-gradient(to bottom right, #66BBA8, #4188e8);
+}
+.toggle-button:selected{
+    -fx-background-color: rgba(137, 211, 221, 0.69);
+    -fx-text-fill:  linear-gradient(to bottom right, #66BBA8, #4188e8);
+}
+
+
+
+.scroll-pane{
+    -fx-background-color: #3cb5c8;
+}
+
+.button{
+    -fx-background-color: #66bba8;
+    -fx-background-radius: 30;
+}
+.button:selected{
+    -fx-background-color: #468376;
+    -fx-background-radius: 30;
+}
+

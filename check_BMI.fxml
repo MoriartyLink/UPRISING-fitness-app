@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="312.0" prefWidth="650.0" spacing="20" style="-fx-background-color: linear-gradient(to bottom right, #6666FF, #313131); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0, 0, 5);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.uprising.CheckBMIController">
+   <padding>
+      <Insets bottom="20" left="20" right="20" top="20" />
+   </padding>
+   <children>
+      <HBox prefHeight="20.0" prefWidth="610.0">
+         <children>
+            <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: transparent; -fx-text-fill: #FFFFFF; -fx-font-family: 'Arial Bold'; -fx-font-size: 12; -fx-padding: 10; -fx-border-color: white; -fx-border-radius: 40;" text="Back">
+               <effect>
+                  <DropShadow color="rgba(102, 102, 255, 0.5)" radius="8" />
+               </effect>
+            </Button>
+         </children>
+      </HBox>
+      <VBox fx:id="sidebar" alignment="TOP_CENTER" prefHeight="46.0" prefWidth="292.0" style="-fx-background-color: none; -fx-background-radius: 0 10 10 0; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 5, 0);">
+         <children>
+            <Label style="-fx-font-family: 'Arial Bold Italic'; -fx-font-size: 26;" text="Daily BMI Check" textFill="#FFFFFF">
+               <effect>
+                  <Glow level="0.6" />
+               </effect>
+            </Label>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="102.0" prefWidth="610.0" spacing="15">
+         <children>
+            <Label alignment="CENTER_RIGHT" prefWidth="150.0" style="-fx-font-family: 'Arial Bold'; -fx-font-size: 16;" text="Enter Weight" textFill="#E0E0E0" />
+            <TextField fx:id="weightField" alignment="CENTER" prefHeight="40.0" prefWidth="225.0" style="-fx-background-color: rgba(255, 255, 255, 0.9); -fx-background-radius: 10;                               -fx-font-family: 'Arial'; -fx-font-size: 16;" />
+            <ToggleButton fx:id="unitToggle" mnemonicParsing="false" onAction="#handleUnitToggle" prefHeight="40.0" prefWidth="60.0" selected="true" style="-fx-background-color: #6666FF; -fx-text-fill: #FFFFFF;                                  -fx-background-radius: 10; -fx-font-family: 'Arial Bold'; -fx-font-size: 14;" text="kg">
+               <effect>
+                  <DropShadow color="rgba(0,0,0,0.3)" radius="5" />
+               </effect>
+            </ToggleButton>
+            <Button mnemonicParsing="false" onAction="#handleCalculateButton" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #6666FF; -fx-background-radius: 10;                            -fx-text-fill: #FFFFFF; -fx-font-family: 'Arial Bold'; -fx-font-size: 16;" text="Calculate">
+               <effect>
+                  <DropShadow color="rgba(0,0,0,0.3)" radius="5" />
+               </effect>
+            </Button>
+         </children>
+      </HBox>
+      <VBox fx:id="resultCard" alignment="CENTER" prefHeight="80.0" prefWidth="610.0" style="-fx-background-color: rgba(49, 49, 49, 0.85); -fx-background-radius: 10;                    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);                    -fx-padding: 15;" visible="false">
+         <children>
+            <Label fx:id="bmiResult" style="-fx-font-family: 'Arial Bold Italic'; -fx-font-size: 28;" textFill="#FFFFFF">
+               <effect>
+                  <Glow level="0.4" />
+               </effect>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</VBox>
