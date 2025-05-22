@@ -1,0 +1,657 @@
+CREATE DATABASE IF NOT EXISTS project_db;
+
+use project_db;
+
+
+
+
+
+
+ALTER TABLE users ADD COLUMN gender VARCHAR(10) NOT NULL;
+ALTER TABLE users ADD COLUMN year_of_birth INT NOT NULL;
+ALTER TABLE users ADD COLUMN phone_no VARCHAR(20);
+
+CREATE TABLE `project_db`.`challenge` (
+  `ChallengeID` INT PRIMARY KEY AUTO_INCREMENT,
+  `ChallengeTitle` VARCHAR(255) NOT NULL,
+  `minPerDay` INT,
+  `Achievement` VARCHAR(255),
+  `Duration` INT,
+  `goal` VARCHAR(255),
+  `required_experience` VARCHAR(50),
+  `gender` VARCHAR(10));
+  
+   CREATE TABLE Exercise (
+    ExerciseID INT PRIMARY KEY AUTO_INCREMENT,
+    exerciseImageID INT,
+    targetMuscles VARCHAR(255),
+    goal VARCHAR(255),
+    experience VARCHAR(50),
+    gender VARCHAR(50),
+    required_equipments VARCHAR(255)
+);
+
+CREATE TABLE Program (
+    ProgramID INT PRIMARY KEY AUTO_INCREMENT,
+    ProgramTitle VARCHAR(255) NOT NULL,
+    Achievement VARCHAR(255),
+    Duration INT,
+    goal VARCHAR(255),
+    required_experience VARCHAR(50),
+    gender VARCHAR(50)
+);
+
+CREATE TABLE Challenge_Exercise (
+    ChallengeExerciseID INT PRIMARY KEY AUTO_INCREMENT,
+    ExerciseID INT,
+    ChallengeID INT,
+    count_day INT,
+    FOREIGN KEY (ExerciseID) REFERENCES Exercise(ExerciseID),
+    FOREIGN KEY (ChallengeID) REFERENCES Challenge(ChallengeID)
+);
+
+CREATE TABLE Program_Exercise (
+    ProgramExerciseID INT PRIMARY KEY AUTO_INCREMENT,
+    ExerciseID INT,
+    programID INT,
+    day VARCHAR(50),
+    FOREIGN KEY (ExerciseID) REFERENCES Exercise(ExerciseID),
+    FOREIGN KEY (programID) REFERENCES Program(ProgramID)
+);
+
+CREATE TABLE Video (
+    videoID INT PRIMARY KEY AUTO_INCREMENT,
+    ExerciseID INT,
+    videoTitle VARCHAR(255),
+    FOREIGN KEY (ExerciseID) REFERENCES Exercise(ExerciseID)
+);
+
+-- Insert a new challenge
+INSERT INTO Challenge (ChallengeID, ChallengeTitle, minPerDay, Achievement, Duration, goal, required_experience, gender)
+VALUES (1, '30-day Plank Challenge', 1, 'Improved Core Strength', 30, 'Complete 30 planks daily', 'Beginner', 'All');
+
+-- Insert a new exercise
+INSERT INTO Exercise (ExerciseID, exerciseImageID, targetMuscles, goal, experience, gender, required_equipments)
+VALUES (1, 1, 'Core', 'Improve core strength', 'Beginner', 'All', 'Mat');
+
+-- Insert a new program
+INSERT INTO Program (ProgramID, ProgramTitle, Achievement, Duration, goal, required_experience, gender)
+VALUES (1, '12-week Strength Training', 'Build Muscle', 12, 'Gain muscle mass', 'Intermediate', 'All');
+
+-- Associate an exercise with a challenge
+INSERT INTO Challenge_Exercise (ChallengeExerciseID, ExerciseID, ChallengeID, count_day)
+VALUES (1, 1, 1, 1);
+
+-- Associate an exercise with a program
+INSERT INTO Program_Exercise (PrexerciseogramExerciseID, ExerciseID, programID, day)
+VALUES (1, 1, 1, 'Monday');
+
+
+ALTER TABLE Exercise ADD COLUMN exerciseTitle VARCHAR(255) NOT NULL;
+ALTER TABLE Exercise ADD COLUMN repRange VARCHAR(50) NOT NULL;
+ALTER TABLE Exercise ADD COLUMN   weightRange VARCHAR(50) ;
+INSERT INTO Exercise (ExerciseID, exerciseImageID, targetMuscles, goal, experience, gender, required_equipments, exerciseTitle, repRange, weightRange)
+VALUES
+(1, 1, 'Core', 'Improve core strength', 'Beginner', 'All', 'None', 'Plank', '3 sets of 60 seconds', 'Bodyweight'),
+(2, 2, 'Back', 'Improve back strength', 'Intermediate', 'All', 'Pull-up bar', 'Pull-up', '3 sets of 8-12 reps', 'Bodyweight'),
+(3, 3, 'Bicep', 'Build bicep size', 'Beginner', 'All', 'Dumbbells', 'Bicep Curl', '3 sets of 12-15 reps', '5-10 kg'),
+(4, 4, 'Upper Back', 'Strengthen upper back', 'Intermediate', 'All', 'Kettlebells', 'Kettlebell Row', '3 sets of 8-12 reps', '10-15 kg'),
+(5, 5, 'Lower Back', 'Strengthen lower back', 'Beginner', 'All', 'None', 'Superman', '3 sets of 12-15 reps', 'Bodyweight'),
+(6, 6, 'Shoulder', 'Improve shoulder stability', 'Intermediate', 'All', 'Dumbbells', 'Shoulder Press', '3 sets of 8-12 reps', '5-10 kg'),
+(7, 7, 'Leg', 'Build leg strength', 'Intermediate', 'All', 'Barbells', 'Squats', '3 sets of 8-12 reps', '20-30 kg'),
+(8, 8, 'Glutes', 'Strengthen glutes', 'Beginner', 'All', 'None', 'Glute Bridges', '3 sets of 12-15 reps', 'Bodyweight'),
+(9, 9, 'Back', 'Improve lat strength', 'Intermediate', 'All', 'EZ Bar', 'Lat Pulldown', '3 sets of 8-12 reps', '10-15 kg'),
+(10, 10, 'Chest', 'Build chest size', 'Intermediate', 'All', 'Bench', 'Bench Press', '3 sets of 8-12 reps', '20-30 kg'),
+(11, 11, 'Leg', 'Build leg endurance', 'Intermediate', 'All', 'Resistance Bands', 'Banded Leg Curls', '3 sets of 12-15 reps', 'Light resistance');
+
+
+INSERT INTO Video (videoID, ExerciseID, videoTitle)
+VALUES
+(1, 1, 'Plank'),
+(2, 2, 'Pull-up'),
+(3, 3, 'Bicep Curl'),
+(4, 4, 'Kettlebell Row'),
+(5, 5, 'Superman'),
+(6, 6, 'Shoulder Press'),
+(7, 7, 'Squats'),
+(8, 8, 'Glute Bridges'),
+(9, 9, 'Lat Pulldown'),
+(10, 10, 'Bench Press'),
+(11, 11, 'Banded Leg Curls');
+
+ALTER TABLE users ADD COLUMN height DOUBLE;
+CREATE TABLE IF NOT EXISTS userBodyState (
+    RecordID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT,
+    weight DOUBLE,
+    BMI DOUBLE,
+    currentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES users(UserID)
+);
+
+TRUNCATE TABLE users;
+drop table users;
+SET FOREIGN_KEY_CHECKS = 0;
+
+
+CREATE TABLE users (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    phone_no VARCHAR(20),
+    password VARCHAR(255),
+    email VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    gender VARCHAR(10),
+    date_of_birth DATE,
+    height int 
+);
+
+INSERT INTO users (username, phone_no, password, email, created_at, gender, date_of_birth, height)
+VALUES 
+('Kyaw Kyaw', '09789910866', '123', 'kyaw@example.com', NOW(), 'Male', '1993-02-19', 168),
+('Nanda', '09789910867', '123', 'nanda@example.com', NOW(), 'Female', '1993-09-21', 168);
+
+INSERT INTO Challenge (ChallengeTitle, minPerDay, Achievement, Duration, goal, required_experience, gender)
+VALUES 
+('30-day Push-up Challenge', 5, 'Upper Body Strength', 30, 'Complete push-up progression', 'Beginner', 'All'),
+('8-week Muscle Builder', 15, 'Muscle Growth', 56, 'Increase muscle mass', 'Intermediate', 'All');
+
+INSERT INTO Challenge_Exercise (ExerciseID, ChallengeID, count_day)
+VALUES 
+(10, 2, 1),  -- Bench Press for Push-up Challenge
+(1, 2, 1),   -- Plank for Push-up Challenge
+(7, 3, 1),   -- Squats for Muscle Builder
+(10, 3, 1);  -- Bench Press for Muscle Builder
+
+INSERT INTO Challenge (ChallengeTitle, minPerDay, Achievement, Duration, goal, required_experience, gender)
+VALUES 
+('7-Day Core Blast', 10, 'Stronger Abs', 7, 'Improve core strength', 'Beginner', 'All'),
+('21-Day Cardio Kickstart', 20, 'Improved Endurance', 21, 'Boost cardiovascular health', 'Beginner', 'All'),
+('4-Week Flexibility Challenge', 15, 'Enhanced Mobility', 28, 'Increase flexibility', 'Beginner', 'All'),
+('30-Day Squat Challenge', 10, 'Lower Body Strength', 30, 'Strengthen legs and glutes', 'Intermediate', 'All'),
+('6-Week Power Lifting', 25, 'Max Strength', 42, 'Increase lifting capacity', 'Advanced', 'All'),
+('14-Day Yoga Flow', 15, 'Mind-Body Balance', 14, 'Enhance flexibility and calm', 'Beginner', 'All'),
+('8-Week Fat Burner', 30, 'Weight Loss', 56, 'Reduce body fat', 'Intermediate', 'All'),
+('30-Day Plank Mastery', 5, 'Core Stability', 30, 'Master plank endurance', 'Beginner', 'All'),
+('12-Week Marathon Prep', 40, 'Running Stamina', 84, 'Prepare for a marathon', 'Advanced', 'All'),
+('5-Day HIIT Blitz', 15, 'Full-Body Fitness', 5, 'High-intensity fitness boost', 'Intermediate', 'All');
+
+
+-- 3.3.2025
+drop table challenge;
+truncate table challenge_exercise;
+CREATE TABLE Challenge (
+    ChallengeID INT PRIMARY KEY AUTO_INCREMENT,
+    ChallengeTitle VARCHAR(255) NOT NULL,
+    minPerDay INT NOT NULL,
+    Achievement VARCHAR(255),
+    Duration INT NOT NULL,
+    goal VARCHAR(255),
+    required_experience VARCHAR(50),
+    gender VARCHAR(50)
+);
+INSERT INTO Challenge (ChallengeTitle, minPerDay, Achievement, Duration, goal, required_experience, gender)
+VALUES 
+('7-Day Core Strength', 10, 'Stronger Core', 7, 'Enhance core stability', 'Beginner', 'All'),
+('30-Day Upper Body Blast', 15, 'Upper Body Strength', 30, 'Build upper body muscle', 'Intermediate', 'All'),
+('21-Day Leg Power', 20, 'Leg Strength', 21, 'Strengthen legs and glutes', 'Intermediate', 'All'),
+('14-Day Back Builder', 15, 'Stronger Back', 14, 'Improve back strength', 'Intermediate', 'All'),
+('5-Day Full Body Kickstart', 10, 'Overall Fitness', 5, 'Jumpstart fitness routine', 'Beginner', 'All'),
+('8-Week Chest & Arms', 25, 'Chest and Arm Size', 56, 'Increase chest and bicep mass', 'Intermediate', 'All'),
+('30-Day Glute Challenge', 10, 'Toned Glutes', 30, 'Strengthen and tone glutes', 'Beginner', 'All'),
+('6-Week Shoulder Sculptor', 20, 'Shoulder Definition', 42, 'Enhance shoulder strength', 'Intermediate', 'All'),
+('10-Day Lower Back Boost', 10, 'Lower Back Resilience', 10, 'Strengthen lower back', 'Beginner', 'All'),
+('4-Week Compound Lift', 30, 'Full-Body Power', 28, 'Master compound movements', 'Intermediate', 'All');
+
+INSERT INTO Challenge_Exercise (ExerciseID, ChallengeID, count_day)
+VALUES 
+-- Original Challenges (from your initial data)
+(10, 2, 1),  -- Bench Press for 30-day Push-up Challenge
+(1, 2, 1),   -- Plank for 30-day Push-up Challenge
+(7, 3, 1),   -- Squats for 8-week Muscle Builder
+(10, 3, 1),  -- Bench Press for 8-week Muscle Builder
+
+-- 7-Day Core Strength (ChallengeID: 4)
+(1, 4, 1),   -- Plank
+(5, 4, 1),   -- Superman
+
+-- 30-Day Upper Body Blast (ChallengeID: 5)
+(2, 5, 1),   -- Pull-up
+(10, 5, 1),  -- Bench Press
+(3, 5, 1),   -- Bicep Curl
+
+-- 21-Day Leg Power (ChallengeID: 6)
+(7, 6, 1),   -- Squats
+(11, 6, 1),  -- Banded Leg Curls
+
+-- 14-Day Back Builder (ChallengeID: 7)
+(2, 7, 1),   -- Pull-up
+(4, 7, 1),   -- Kettlebell Row
+(9, 7, 1),   -- Lat Pulldown
+
+-- 5-Day Full Body Kickstart (ChallengeID: 8)
+(1, 8, 1),   -- Plank
+(7, 8, 1),   -- Squats
+(10, 8, 1),  -- Bench Press
+
+-- 8-Week Chest & Arms (ChallengeID: 9)
+(10, 9, 1),  -- Bench Press
+(3, 9, 1),   -- Bicep Curl
+(6, 9, 1),   -- Shoulder Press
+
+-- 30-Day Glute Challenge (ChallengeID: 10)
+(8, 10, 1),  -- Glute Bridges
+(7, 10, 1),  -- Squats
+
+-- 6-Week Shoulder Sculptor (ChallengeID: 11)
+(6, 11, 1),  -- Shoulder Press
+(4, 11, 1),  -- Kettlebell Row (for scapular stability)
+
+-- 10-Day Lower Back Boost (ChallengeID: 12)
+(5, 12, 1),  -- Superman
+(1, 12, 1),  -- Plank (for core support)
+
+-- 4-Week Compound Lift (ChallengeID: 13)
+(7, 13, 1),  -- Squats
+(10, 13, 1), -- Bench Press
+(2, 13, 1);  -- Pull-up
+
+
+CREATE TABLE CustomizedChallenge (
+    CustomChallengeID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    ChallengeTitle VARCHAR(255) NOT NULL,
+    minPerDay INT NOT NULL,
+    required_equipments VARCHAR(255),
+    FOREIGN KEY (UserID) REFERENCES users(UserID)
+);
+
+CREATE TABLE CustomizedChallenge_Exercise (
+    CustomChallengeExerciseID INT PRIMARY KEY AUTO_INCREMENT,
+    CustomChallengeID INT,
+    ExerciseTitle VARCHAR(255),
+    FOREIGN KEY (CustomChallengeID) REFERENCES CustomizedChallenge(CustomChallengeID)
+);
+
+-- Create the User_Equipment table
+CREATE TABLE IF NOT EXISTS User_Equipment (
+    UserEquipmentID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT NOT NULL,
+    EquipmentType VARCHAR(50) NOT NULL,
+    Weight VARCHAR(50) NOT NULL,
+    SelectionDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Selected BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (UserID) REFERENCES users(UserID) ON DELETE CASCADE
+);
+
+-- Optional: Index for faster queries by UserID
+CREATE INDEX idx_user_equipment_userid ON User_Equipment (UserID);
+
+-- Insert sample data for UserID 1
+INSERT INTO User_Equipment (UserID, EquipmentType, Weight)
+VALUES 
+    (1, 'Dumbbells', '2.5 Kg'),
+    (1, 'Kettlebells', '10 Kg'),
+    (1, 'Barbells', 'N/A'),
+    (1, 'Resistance Bands', 'Medium');
+
+select * from  User_Equipment;
+-- Update for sign up
+ALTER TABLE users 
+    ADD COLUMN weight DOUBLE,
+    ADD COLUMN goal VARCHAR(255),
+    ADD COLUMN experience VARCHAR(255);
+    
+  
+
+CREATE TABLE bmi_records (
+    record_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    weight DOUBLE NOT NULL,
+    bmi DOUBLE NOT NULL,
+    record_date DATE NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(UserID)
+);
+
+CREATE TABLE bmi_temp (
+    temp_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    weight DOUBLE NOT NULL,
+    bmi DOUBLE NOT NULL,
+    record_date DATE NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(UserID)
+);
+
+-- 5.3.2025
+TRUNCATE TABLE Exercise;
+ALTER TABLE Exercise ADD COLUMN age_range VARCHAR(50);
+INSERT INTO Exercise (exerciseImageID, targetMuscles, goal, experience, gender, required_equipments, exerciseTitle, repRange, weightRange, age_range)
+VALUES
+-- Beginner, All genders, Low BMI (underweight), Focus on foundational strength, minimal equipment
+(1, 'Core', 'Build foundational strength', 'Beginner', 'All', 'None', 'Plank', '3 sets of 30-60 seconds', 'Bodyweight', '18-35'),
+(2, 'Glutes', 'Improve stability', 'Beginner', 'All', 'None', 'Glute Bridge', '3 sets of 12-15 reps', 'Bodyweight', '18-35'),
+(3, 'Legs', 'Build leg endurance', 'Beginner', 'All', 'None', 'Bodyweight Squat', '3 sets of 15-20 reps', 'Bodyweight', '18-35'),
+(4, 'Upper Back', 'Improve posture', 'Beginner', 'All', 'Resistance Bands', 'Band Pull-Apart', '3 sets of 15-20 reps', 'Light resistance', '18-50'),
+(5, 'Lower Back', 'Strengthen lower back', 'Beginner', 'All', 'None', 'Superman Hold', '3 sets of 20-30 seconds', 'Bodyweight', '18-50'),
+
+-- Intermediate, Male, Normal BMI, Strength focus, gym equipment
+(6, 'Chest', 'Build chest mass', 'Intermediate', 'Male', 'Barbells', 'Barbell Bench Press', '4 sets of 8-12 reps', '20-40 kg', '18-35'),
+(7, 'Back', 'Increase back strength', 'Intermediate', 'Male', 'Dumbbells', 'Dumbbell Row', '4 sets of 8-12 reps', '10-20 kg', '18-35'),
+(8, 'Legs', 'Build leg power', 'Intermediate', 'Male', 'Barbells', 'Back Squat', '4 sets of 6-10 reps', '30-50 kg', '18-50'),
+(9, 'Shoulders', 'Enhance shoulder size', 'Intermediate', 'Male', 'Dumbbells', 'Overhead Press', '3 sets of 8-12 reps', '10-15 kg', '18-35'),
+(10, 'Biceps', 'Increase arm size', 'Intermediate', 'Male', 'Dumbbells', 'Dumbbell Curl', '3 sets of 10-15 reps', '5-10 kg', '18-35'),
+
+-- Intermediate, Female, High BMI (overweight), Fat loss focus, minimal equipment
+(11, 'Full Body', 'Burn calories', 'Intermediate', 'Female', 'None', 'Burpee', '3 sets of 10-15 reps', 'Bodyweight', '18-35'),
+(12, 'Legs', 'Tone legs', 'Intermediate', 'Female', 'Resistance Bands', 'Banded Lateral Walk', '3 sets of 15-20 reps', 'Medium resistance', '18-50'),
+(13, 'Core', 'Strengthen core', 'Intermediate', 'Female', 'None', 'Bicycle Crunch', '3 sets of 15-20 reps per side', 'Bodyweight', '18-35'),
+(14, 'Glutes', 'Lift and tone glutes', 'Intermediate', 'Female', 'Resistance Bands', 'Banded Hip Thrust', '3 sets of 12-15 reps', 'Medium resistance', '18-35'),
+(15, 'Arms', 'Tone arms', 'Intermediate', 'Female', 'Dumbbells', 'Tricep Overhead Extension', '3 sets of 12-15 reps', '3-5 kg', '18-35'),
+
+-- Advanced, All genders, Normal BMI, Power focus, gym equipment
+(16, 'Full Body', 'Increase power', 'Advanced', 'All', 'Barbells', 'Deadlift', '4 sets of 5-8 reps', '40-60 kg', '18-35'),
+(17, 'Chest', 'Maximize strength', 'Advanced', 'All', 'Barbells', 'Incline Bench Press', '4 sets of 5-8 reps', '30-50 kg', '18-35'),
+(18, 'Legs', 'Build explosive power', 'Advanced', 'All', 'Kettlebells', 'Kettlebell Swing', '3 sets of 15-20 reps', '15-25 kg', '18-35'),
+(19, 'Back', 'Increase pulling strength', 'Advanced', 'All', 'Barbells', 'Barbell Bent-Over Row', '4 sets of 6-10 reps', '30-50 kg', '18-35'),
+(20, 'Shoulders', 'Enhance stability', 'Advanced', 'All', 'Dumbbells', 'Lateral Raise', '3 sets of 12-15 reps', '5-10 kg', '18-35'),
+
+-- Beginner, Older adults (50+), Flexibility and mobility focus, minimal equipment
+(21, 'Full Body', 'Improve mobility', 'Beginner', 'All', 'None', 'Chair Squat', '3 sets of 10-15 reps', 'Bodyweight', '50+'),
+(22, 'Back', 'Reduce back stiffness', 'Beginner', 'All', 'None', 'Cat-Cow Stretch', '3 sets of 10 reps', 'Bodyweight', '50+'),
+(23, 'Legs', 'Enhance balance', 'Beginner', 'All', 'None', 'Standing Leg Lift', '3 sets of 10 reps per side', 'Bodyweight', '50+'),
+(24, 'Shoulders', 'Improve shoulder mobility', 'Beginner', 'All', 'None', 'Arm Circles', '3 sets of 20 reps per direction', 'Bodyweight', '50+'),
+(25, 'Core', 'Support lower back', 'Beginner', 'All', 'None', 'Seated Knee Lift', '3 sets of 15 reps', 'Bodyweight', '50+');
+
+DELIMITER //
+
+CREATE FUNCTION GetBMICategory(bmi DOUBLE) RETURNS VARCHAR(20)
+DETERMINISTIC
+BEGIN
+    DECLARE category VARCHAR(20);
+    SET category = CASE
+        WHEN bmi < 18.5 THEN 'Underweight'
+        WHEN bmi BETWEEN 18.5 AND 24.9 THEN 'Normal'
+        WHEN bmi BETWEEN 25 AND 29.9 THEN 'Overweight'
+        ELSE 'Obese'
+    END;
+    RETURN category;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE RecommendExercises(
+    IN p_userID INT,
+    IN p_gender VARCHAR(10),
+    IN p_experience VARCHAR(50),
+    IN p_age INT,
+    IN p_bmi DOUBLE
+)
+BEGIN
+    DECLARE v_bmi_category VARCHAR(20);
+    DECLARE v_age_range VARCHAR(50);
+
+    -- Determine BMI category
+    SET v_bmi_category = GetBMICategory(p_bmi);
+
+    -- Determine age range
+    SET v_age_range = CASE
+        WHEN p_age >= 50 THEN '50+'
+        WHEN p_age >= 18 THEN '18-35'
+        ELSE '18-50'
+    END;
+
+    -- Select exercises matching user attributes and equipment
+    SELECT e.*
+    FROM Exercise e
+    LEFT JOIN User_Equipment ue ON e.required_equipments = ue.EquipmentType OR e.required_equipments = 'None'
+    WHERE e.gender IN (p_gender, 'All')
+    AND e.experience = p_experience
+    AND (e.age_range = v_age_range OR e.age_range IS NULL)
+    AND (ue.UserID = p_userID OR e.required_equipments = 'None')
+    AND (
+        (v_bmi_category = 'Underweight' AND e.goal LIKE '%strength%') OR
+        (v_bmi_category = 'Normal' AND e.goal LIKE '%build%') OR
+        (v_bmi_category IN ('Overweight', 'Obese') AND e.goal LIKE '%burn%')
+    )
+    LIMIT 5;
+END //
+
+DELIMITER ;
+CALL RecommendExercises(1, 'Male', 'Intermediate', 30, 27);
+
+
+TRUNCATE TABLE Challenge_Exercise;
+
+INSERT INTO Challenge_Exercise (ExerciseID, ChallengeID, count_day)
+VALUES
+-- 7-Day Core Strength (ChallengeID: 4)
+(1, 4, 1),   -- Plank
+(5, 4, 1),   -- Superman Hold
+(13, 4, 1),  -- Bicycle Crunch
+
+-- 30-Day Upper Body Blast (ChallengeID: 5)
+(6, 5, 1),   -- Barbell Bench Press
+(7, 5, 1),   -- Dumbbell Row
+(9, 5, 1),   -- Overhead Press
+
+-- 21-Day Leg Power (ChallengeID: 6)
+(8, 6, 1),   -- Back Squat
+(12, 6, 1),  -- Banded Lateral Walk
+(18, 6, 1),  -- Kettlebell Swing
+
+-- 14-Day Back Builder (ChallengeID: 7)
+(7, 7, 1),   -- Dumbbell Row
+(19, 7, 1),  -- Barbell Bent-Over Row
+(4, 7, 1),   -- Band Pull-Apart
+
+-- 5-Day Full Body Kickstart (ChallengeID: 8)
+(11, 8, 1),  -- Burpee
+(3, 8, 1),   -- Bodyweight Squat
+(1, 8, 1);   -- Plank
+
+INSERT INTO CustomizedChallenge (UserID, ChallengeTitle, minPerDay, required_equipments)
+VALUES
+(1, 'User 1 Fat Loss Challenge', 20, 'Dumbbells'),
+(2, 'User 2 Strength Challenge', 30, 'Barbells');
+
+INSERT INTO CustomizedChallenge_Exercise (CustomChallengeID, ExerciseTitle)
+VALUES
+(1, 'Burpee'),
+(1, 'Dumbbell Row'),
+(2, 'Barbell Bench Press'),
+(2, 'Back Squat');
+
+
+-- Rename the Video table to GIF
+ALTER TABLE Video RENAME TO GIF;
+
+-- Adjust the table structure (if needed) to reflect that it stores GIFs
+ALTER TABLE GIF CHANGE COLUMN videoID GifID INT;
+ALTER TABLE GIF CHANGE COLUMN videoTitle GifTitle VARCHAR(255);
+TRUNCATE TABLE GIF;
+
+INSERT INTO GIF (ExerciseID, GifTitle)
+SELECT ExerciseID, exerciseTitle
+FROM Exercise;
+
+-- Describe the table to verify its structure
+DESCRIBE GIF;
+
+-- Select a few rows to confirm the data
+SELECT * FROM GIF LIMIT 5;
+ALTER TABLE GIF ADD COLUMN GifURL VARCHAR(255);
+ALTER TABLE GIF ADD COLUMN Duration INT; -- Duration in secondsgetMagazineNamegetMagazineNamegetMagazineNamegetMagazineName
+
+-- 6.3.2025
+ALTER TABLE Exercise ADD COLUMN guideline TEXT;
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Get into a forearm plank position.\nStep 2: Maintain a straight line from head to heels.\nStep 3: Engage your core, and hold the position without sagging.' 
+WHERE exerciseTitle = 'Plank';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Lie on your back with your knees bent and feet flat on the ground.\nStep 2: Push your hips upward while squeezing your glutes at the top.\nStep 3: Hold briefly, then lower back down with control.' 
+WHERE exerciseTitle = 'Glute Bridge';
+UPDATE Exercise 
+SET guideline = 'Step 1: Stand with feet shoulder-width apart.\nStep 2: Squat down by bending your knees and hips while keeping your back straight.\nStep 3: Push through your heels to return to standing.' 
+WHERE exerciseTitle = 'Bodyweight Squat';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Hold a resistance band with both hands at shoulder height.\nStep 2: Pull the band apart while keeping your arms straight.\nStep 3: Squeeze your shoulder blades together, then slowly return to the start.' 
+WHERE exerciseTitle = 'Band Pull-Apart';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Lie face down with your arms extended forward.\nStep 2: Lift your arms and legs off the ground while keeping your head neutral.\nStep 3: Hold briefly, then lower back down slowly.' 
+WHERE exerciseTitle = 'Superman Hold';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Lie on a bench and grip the barbell slightly wider than shoulder-width.\nStep 2: Lower the barbell to your chest while keeping your elbows at about 45 degrees.\nStep 3: Push the barbell back up to the starting position.' 
+WHERE exerciseTitle = 'Barbell Bench Press';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Bend at the hips while keeping your back straight.\nStep 2: Pull the dumbbells toward your torso, keeping elbows close to your body.\nStep 3: Squeeze your shoulder blades, then slowly lower the dumbbells.' 
+WHERE exerciseTitle = 'Dumbbell Row';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Place a barbell on your upper back and stand with feet shoulder-width apart.\nStep 2: Squat down while keeping your chest up and knees tracking over your toes.\nStep 3: Push through your heels to return to the starting position.' 
+WHERE exerciseTitle = 'Back Squat';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Stand with feet hip-width apart, holding dumbbells at your sides.\nStep 2: Take a step forward and lower your back knee toward the ground.\nStep 3: Push through your front foot to return to standing, then repeat on the other leg.' 
+WHERE exerciseTitle = 'Dumbbell Lunge';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Stand with feet shoulder-width apart, holding a kettlebell with both hands.\nStep 2: Hinge at your hips and swing the kettlebell up to chest height.\nStep 3: Let the kettlebell swing back between your legs, then repeat the motion.' 
+WHERE exerciseTitle = 'Kettlebell Swing';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Stand tall with a pull-up bar overhead.\nStep 2: Grip the bar with palms facing away and pull yourself up until your chin is above the bar.\nStep 3: Lower yourself down with control and repeat.' 
+WHERE exerciseTitle = 'Pull-Up';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Stand with feet shoulder-width apart, holding a barbell at shoulder height.\nStep 2: Press the barbell overhead while keeping your core engaged.\nStep 3: Lower the barbell back to the starting position.' 
+WHERE exerciseTitle = 'Overhead Press';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Stand with feet hip-width apart, gripping a barbell in front of your thighs.\nStep 2: Hinge at your hips and lower the barbell down your legs.\nStep 3: Stand back up, keeping your back straight and core engaged.' 
+WHERE exerciseTitle = 'Romanian Deadlift';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Lie on your back and place your hands behind your head.\nStep 2: Lift your shoulders off the ground and twist your torso, bringing your elbow toward the opposite knee.\nStep 3: Alternate sides in a controlled motion.' 
+WHERE exerciseTitle = 'Bicycle Crunch';
+
+UPDATE Exercise 
+SET guideline = 'Step 1: Get into a push-up position with arms extended.\nStep 2: Lower yourself down until your chest almost touches the ground.\nStep 3: Push back up to the starting position while keeping your body straight.' 
+WHERE exerciseTitle = 'Push-Up';
+
+CREATE TABLE user_progress (
+    progress_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    activity_type ENUM('exercise', 'challenge', 'program') NOT NULL,
+    exercise_id INT,
+    challenge_id INT,
+    program_id INT,
+    completion_date DATE NOT NULL,
+    duration INT COMMENT 'In minutes (optional)',
+    status ENUM('completed', 'in_progress') DEFAULT 'completed',
+    notes TEXT,
+
+    -- Foreign Keys
+    FOREIGN KEY (user_id) REFERENCES users(UserID),
+    FOREIGN KEY (exercise_id) REFERENCES Exercise(ExerciseID),
+    FOREIGN KEY (challenge_id) REFERENCES Challenge(ChallengeID),
+    FOREIGN KEY (program_id) REFERENCES Program(ProgramID),
+
+    -- Ensure only one activity is linked per row
+    CONSTRAINT chk_activity CHECK (
+        (activity_type = 'exercise' AND exercise_id IS NOT NULL AND challenge_id IS NULL AND program_id IS NULL) OR
+        (activity_type = 'challenge' AND challenge_id IS NOT NULL AND exercise_id IS NULL AND program_id IS NULL) OR
+        (activity_type = 'program' AND program_id IS NOT NULL AND exercise_id IS NULL AND challenge_id IS NULL)
+    )
+);
+
+-- 13.3.2025
+ALTER TABLE program ADD COLUMN explanation VARCHAR(200) ;
+
+-- 14.3.2025
+-- Add sample programs with explanations
+TRUNCATE TABLE Program;
+SET SQL_SAFE_UPDATES = 0;
+SET FOREIGN_KEY_CHECKS = 0;
+
+INSERT INTO Program (ProgramTitle, Achievement, Duration, goal, required_experience, gender, explanation)
+VALUES 
+('Beginner Full Body', 'Basic Strength', 30, 'Build foundation', 'Beginner', 'All', 'Perfect for newbies to build overall strength.'),
+('Intermediate Power', 'Muscle Growth', 60, 'Increase mass', 'Intermediate', 'All', 'Designed for muscle hypertrophy.'),
+('Advanced Strength', 'Max Power', 90, 'Maximize strength', 'Advanced', 'All', 'Heavy lifting for pros.');
+
+-- Assign exercises to programs
+TRUNCATE TABLE Program_Exercise;
+INSERT INTO Program_Exercise (ExerciseID, programID, day)
+VALUES 
+-- Beginner Full Body (ProgramID: 1)
+(1, 1, 'Day 1'), (2, 1, 'Day 1'), (3, 1, 'Day 1'),  -- Plank, Glute Bridge, Bodyweight Squat
+(4, 1, 'Day 2'), (5, 1, 'Day 2'),                    -- Band Pull-Apart, Superman Hold
+
+-- Intermediate Power (ProgramID: 2)
+(6, 2, 'Day 1'), (7, 2, 'Day 1'), (8, 2, 'Day 1'),  -- Barbell Bench Press, Dumbbell Row, Back Squat
+(9, 2, 'Day 2'), (10, 2, 'Day 2'),                   -- Overhead Press, Dumbbell Curl
+
+-- Advanced Strength (ProgramID: 3)
+(16, 3, 'Day 1'), (17, 3, 'Day 1'), (18, 3, 'Day 1'), -- Deadlift, Incline Bench Press, Kettlebell Swing
+(19, 3, 'Day 2'), (20, 3, 'Day 2');                   -- Barbell Bent-Over Row, Lateral Raise
+
+-- Procedure to assign exercises based on program requirements
+DELIMITER //
+CREATE PROCEDURE AssignExercisesToProgram(
+    IN p_programID INT,
+    IN p_experience VARCHAR(50),
+    IN p_goal VARCHAR(255),
+    IN p_maxExercises INT
+)
+BEGIN
+    INSERT INTO Program_Exercise (ExerciseID, programID, day)
+    SELECT e.ExerciseID, p_programID, CONCAT('Day ', FLOOR(1 + RAND() * 7))
+    FROM Exercise e
+    WHERE e.experience = p_experience
+    AND e.goal LIKE CONCAT('%', p_goal, '%')
+    ORDER BY RAND()
+    LIMIT p_maxExercises;
+END //
+DELIMITER ;
+
+-- Example usage
+CALL AssignExercisesToProgram(1, 'Beginner', 'strength', 5);
+CALL AssignExercisesToProgram(2, 'Intermediate', 'mass', 5);
+CALL AssignExercisesToProgram(3, 'Advanced', 'power', 5);
+
+-- 15.3.2025
+use project_db;
+ALTER TABLE users ADD COLUMN exp INT DEFAULT 0;
+
+
+-- Progress updates (myint wai update )
+-- Ensure your user_progress table has proper foreign key constraints
+ALTER TABLE user_progress
+ADD FOREIGN KEY (exercise_id) REFERENCES Exercise(ExerciseID);
+
+ALTER TABLE user_progress
+ADD CONSTRAINT fk_exercise
+FOREIGN KEY (exercise_id) 
+REFERENCES Exercise(ExerciseID)
+ON DELETE CASCADE;
+
+INSERT INTO user_progress (user_id, activity_type, exercise_id, completion_date) VALUES (6, 'exercise', 1, '2025-03-15'); -- Superman Hold
+INSERT INTO user_progress (user_id, activity_type, exercise_id, completion_date) VALUES (6, 'exercise', 2, '2025-03-15'); -- Plank
+INSERT INTO user_progress (user_id, activity_type, challenge_id, completion_date) VALUES (6, 'challenge', 1, '2025-03-15'); -- Core Slide
+INSERT INTO user_progress (user_id, activity_type, program_id, completion_date) VALUES (6, 'program', 1, '2025-03-15'); -- 60 Days Weight Loss
+
+ALTER TABLE Challenge ADD COLUMN difficulty INT DEFAULT 1;
+UPDATE User_Equipment SET Weight = NULL WHERE Weight = 'N/A'; -- you have to manual remove NN in the table
+
+alter table users add column workoutDaysPerWeek int ;
+alter table users drop column exp ;
+
