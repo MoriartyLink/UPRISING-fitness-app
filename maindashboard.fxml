@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="rootVBox" prefHeight="870.0" prefWidth="1550.0" stylesheets="@maindashboard_style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.uprising.MainDashboardController">
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+   </padding>
+   <effect>
+      <DropShadow color="rgba(0,0,0,0.3)" radius="20.0" spread="0.2" />
+   </effect>
+
+   <!-- Header -->
+   <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1550.0" spacing="20.0">
+      <children>
+         <Button fx:id="navbtn" onAction="#toggleNavBar" prefHeight="56.0" prefWidth="74.0" text="☰">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>         <Label fx:id="welcomeLabel" text="Welcome, John Smith" textFill="#FFFFFF">
+            <HBox.margin>
+               <Insets left="20.0" />
+            </HBox.margin>
+            <font>
+               <Font name="System Bold Italic" size="36.0" />
+            </font>
+            <effect>
+               <Glow level="0.82" />
+            </effect>
+         </Label>
+         <Pane HBox.hgrow="ALWAYS" />
+         <Button fx:id="menubarbtn2" prefHeight="45.0" prefWidth="150.0" text="Tools" textFill="WHITE" visible="false">
+            <font>
+               <Font name="System Bold Italic" size="15.0" />
+            </font>
+            <effect>
+               <Glow />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
+         <Button fx:id="menubarbtn1" onAction="#handlemyEquipmentsButton" prefHeight="45.0" prefWidth="150.0" text="My Equipments" textFill="WHITE">
+            <font>
+               <Font name="System Bold Italic" size="15.0" />
+            </font>
+            <effect>
+               <Glow />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
+         <Button fx:id="menubarbtn3" onAction="#handleProfileButton" prefHeight="45.0" prefWidth="150.0" text="Profile" textFill="WHITE">
+            <font>
+               <Font name="System Bold Italic" size="15.0" />
+            </font>
+            <effect>
+               <Glow />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
+         <Button fx:id="exitbtn" prefHeight="45.0" prefWidth="45.0" text="X">
+            <effect>
+               <DropShadow />
+            </effect>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
+      </children>
+      <padding>
+         <Insets right="20.0" />
+      </padding>
+   </HBox>
+
+   <!-- Main Layout with Overlapping Sidebar -->
+   <StackPane prefHeight="795.0" prefWidth="1550.0">
+      <children>
+         <!-- Main Content Container -->
+         <VBox fx:id="mainContent" prefHeight="755.0" prefWidth="1550.0" spacing="20.0" style="-fx-background-color: transparent;">
+            <children>
+               <!-- Challenges Section -->
+               <VBox alignment="CENTER" spacing="20.0">
+                  <HBox prefHeight="45.0" prefWidth="1501.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="283.0" text="Explore Challenges" textFill="#FFFFFF">
+                           <font>
+                              <Font name="System Italic" size="21.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Button fx:id="customizeBtn" mnemonicParsing="false" onAction="#handleCustomizeChallengeButton" prefHeight="30.0" prefWidth="106.0" style="-fx-background-radius: 10;" text="Customize" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="7.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <ToggleButton fx:id="removeBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="37.0" style="-fx-background-radius: 50;" text="-" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <HBox.margin>
+                              <Insets left="20.0" top="7.0" />
+                           </HBox.margin>
+                        </ToggleButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="130.0" prefWidth="1439.0">
+                     <children>
+                        <ScrollPane fx:id="challengeScroll" hbarPolicy="AS_NEEDED" prefHeight="130.0" prefWidth="1344.0" style="-fx-background-color: rgba(23, 26, 80, 0.48); -fx-background: transparent;" vbarPolicy="NEVER">
+                           <content>
+                              <HBox fx:id="challengeHBox" alignment="CENTER_LEFT" prefHeight="140.0" prefWidth="3092.0" spacing="25.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);" />
+                           </content>
+                        </ScrollPane>
+                        <VBox prefHeight="145.0" prefWidth="147.0" style="-fx-background-color: rgba(0, 0, 0, 0.75); -fx-background-radius: 20;">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+
+                           <!-- Outer Circle (Background) -->
+                           <StackPane fx:id="bmiCircleContainer" alignment="CENTER" prefHeight="164.0" prefWidth="159.0" style="-fx-background-color: none;">
+                              <children>
+                                 <Circle fx:id="bmiProgressCircle" fill="transparent" radius="46.0" stroke="#E0E0E0" strokeWidth="10" />
+                                 <Label fx:id="bmiValueLabel" alignment="CENTER" text="0.0" textFill="WHITE">
+                                    <font>
+                                       <Font name="Arial Bold" size="29.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </StackPane>
+
+                           <Button fx:id="BMibtn" onAction="#HandleCheckBMIButton" prefHeight="23.0" prefWidth="96.0" style="-fx-background-color: none; -fx-background-radius: 10;" text="Check BMI" textFill="WHITE">
+                              <font>
+                                 <Font name="Arial Bold Italic" size="14.0" />
+                              </font>
+                              <VBox.margin>
+                                 <Insets left="25.0" top="10.0" />
+                              </VBox.margin>
+                              <cursor>
+                                 <Cursor fx:constant="HAND" />
+                              </cursor>
+                           </Button>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </VBox>
+
+               <!-- Main Content Area -->
+               <BorderPane fx:id="contentPane" prefHeight="500.0" prefWidth="1500.0">
+                  <effect>
+                     <DropShadow color="rgba(0,0,0,0.25)" radius="15.0" spread="0.15" />
+                  </effect>
+                  <right>
+
+                  </right>
+               </BorderPane>
+            </children>
+         </VBox>
+      
+                                 <!-- Sliding Navigation Sidebar (Overlays Main Content) -->
+         <VBox fx:id="navBar" maxWidth="300.0" prefHeight="755.0" prefWidth="260.0" spacing="20.0" translateX="-2000.0">
+            <padding>
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <effect>
+               <DropShadow color="rgba(0,0,0,0.6)" radius="15.0" spread="0.3" />
+            </effect>
+            <children>
+               <Label style="-fx-font-family: 'Segoe UI Bold'; -fx-font-size: 28px;" text="Dashboard" textFill="#FFFFFF" />
+               <Button fx:id="btnBody" onAction="#handleBodyButton" prefHeight="55.0" prefWidth="250.0" text="Body" textFill="WHITE">
+                  <effect>
+                     <DropShadow color="rgba(0,0,0,0.4)" radius="8.0" />
+                  </effect>
+               </Button>
+               <Button onAction="#handleProgressButton" prefHeight="55.0" prefWidth="250.0" text="Progress" textFill="WHITE">
+                  <effect>
+                     <DropShadow color="rgba(0,0,0,0.4)" radius="8.0" />
+                  </effect>
+               </Button>
+               <Button onAction="#handleProgramButton" prefHeight="55.0" prefWidth="250.0" text="Program" textFill="WHITE" visible="false">
+                  <effect>
+                     <DropShadow color="rgba(0,0,0,0.4)" radius="8.0" />
+                  </effect>
+               </Button>
+            </children>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </VBox>
+      </children>
+   </StackPane>
+
+   <!-- Knowledge Footer (Fixed at Bottom) -->
+   <!-- Knowledge Footer (Fixed at Bottom) -->
+   <!-- Knowledge Footer (Fixed at Bottom) -->
+   <Pane fx:id="pane" prefHeight="80.0" prefWidth="1869.0" style="-fx-background-color: transparent; -fx-background-radius: 0 0 15 15;">
+      <children>
+         <Label fx:id="knowledgeLabel" alignment="CENTER_LEFT" layoutX="-38.0" prefHeight="42.0" prefWidth="338.0" text="Hydrate daily for optimal performance." textFill="WHITE" wrapText="false">
+      
+                  <font>
+               <Font name="Arial Bold" size="18.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+</VBox>
