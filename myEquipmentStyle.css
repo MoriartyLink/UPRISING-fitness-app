@@ -1,0 +1,160 @@
+/* Root and General Styles (unchanged) */
+.root {
+    -fx-background-color:   radial-gradient(center 40% 120%, radius 100%, #683fc1 0%, rgb(77,37,255) 30%, rgba(50,28,255,0.76) 60%, #0e0a29 100%);
+}
+
+.button {
+    -fx-background-color: #6666FF;
+    -fx-text-fill: #F2F2F2;
+    -fx-background-radius: 15;
+    -fx-padding: 10 20 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+    -fx-transition: all 0.3s ease;
+}
+
+.button:hover {
+    -fx-background-color: rgba(57, 93, 145, 0.91);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.toggle-button {
+    -fx-background-color: rgba(107, 132, 255, 0.91); /* Default for dumbbells/kettlebells */
+    -fx-text-fill: #F2F2F2;
+    -fx-background-radius: 12;
+    -fx-padding: 8 15 8 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);
+    -fx-transition: all 0.3s ease;
+}
+
+.toggle-button:selected {
+    -fx-background-color: rgb(84, 153, 209); /* Default active state */
+    -fx-text-fill: #F2F2F2;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(68, 94, 242, 0.5), 10, 0, 0, 2);
+}
+
+/* Resistance Band Specific Styles */
+#resistanceXXXLight {
+    -fx-background-color: #E3C800; /* Yellow-ish */
+}
+
+#resistanceXXXLight:selected {
+    -fx-background-color: #FFD700; /* Brighter gold */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(227, 200, 0, 0.5), 10, 0, 0, 2);
+}
+
+#resistanceExtraLight {
+    -fx-background-color: orange;
+}
+
+#resistanceExtraLight:selected {
+    -fx-background-color: #FFA500; /* Brighter orange */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(255, 165, 0, 0.5), 10, 0, 0, 2);
+}
+
+#resistanceLight {
+    -fx-background-color: red;
+}
+
+#resistanceLight:selected {
+    -fx-background-color: #FF4500; /* Brighter red-orange */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(255, 0, 0, 0.5), 10, 0, 0, 2);
+}
+
+#resistanceMedium {
+    -fx-background-color: #3399FF; /* Blue */
+}
+
+#resistanceMedium:selected {
+    -fx-background-color: #1E90FF; /* Brighter blue */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(51, 153, 255, 0.5), 10, 0, 0, 2);
+}
+
+#resistanceHeavy {
+    -fx-background-color: green;
+}
+
+#resistanceHeavy:selected {
+    -fx-background-color: #32CD32; /* Brighter lime green */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 128, 0, 0.5), 10, 0, 0, 2);
+}
+
+#resistanceExtraHeavy {
+    -fx-background-color: black;
+    -fx-text-fill: #F2F2F2; /* Ensure readability */
+}
+
+#resistanceExtraHeavy:selected {
+    -fx-background-color: #333333; /* Lighter black/gray */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 2);
+}
+
+#resistanceXXHeavy {
+    -fx-background-color: purple;
+}
+
+#resistanceXXHeavy:selected {
+    -fx-background-color: #9932CC; /* Brighter purple */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(128, 0, 128, 0.5), 10, 0, 0, 2);
+}
+
+#resistanceXXXHeavy {
+    -fx-background-color: grey;
+}
+
+#resistanceXXXHeavy:selected {
+    -fx-background-color: #A9A9A9; /* Brighter gray */
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(128, 128, 128, 0.5), 10, 0, 0, 2);
+}
+
+/* Checkboxes (unchanged) */
+.check-box .box {
+    -fx-background-color: rgba(164, 128, 242, 0.3);
+    -fx-background-radius: 5;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #A480F2;
+}
+
+.scroll-pane .scroll-bar:vertical {
+     -fx-pref-height: 10;
+     -fx-background-color: none;
+ }
+.scroll-pane .thumb{
+    -fx-background-color: linear-gradient(to top, #c2caff, #6666FF);
+    -fx-background-radius: 5;
+}
+
+
+/* Card Containers (unchanged) */
+VBox.card {
+    -fx-background-color: rgba(48, 48, 124, 0.58);
+    -fx-background-radius: 20;
+    -fx-padding: 25;
+    -fx-effect: innershadow(gaussian, rgba(164, 128, 242, 0.2), 10, 0, 0, 0);
+}
+
+#otherequipmentContainner{
+    -fx-background-color: rgba(48, 48, 124, 0.58);
+    -fx-background-radius: 20;
+
+}
