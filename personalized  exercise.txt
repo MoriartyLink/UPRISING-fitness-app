@@ -1,0 +1,62 @@
+ private List<Exercise> getRecommendedExercises(String targetMuscle) {
+        System.out.println("Enter getRecommendedExercises 1" );
+        List<Exercise> recommended = new ArrayList<>();
+        System.out.println("Enter getRecommendedExercises 2" );
+        String sql = "SELECT e.ExerciseID, e.exerciseTitle, e.age_range " +
+                "FROM Exercise e " +
+                "LEFT JOIN User_Equipment ue ON e.required_equipments = ue.EquipmentType AND ue.UserID = ? " +
+                "WHERE e.targetMuscles LIKE ? " +
+                "AND (e.gender = ? OR e.gender = 'All') " +
+                "AND e.goal = ? " +
+                "AND e.experience = ? " +
+                "AND (e.required_equipments = 'None' OR ue.EquipmentType IS NOT NULL)";
+
+        System.out.println("Enter getRecommendedExercises 3" );
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, currentUser.getId());
+            stmt.setString(2, "%" + targetMuscle + "%");
+            stmt.setString(3, currentUser.getGender());
+            stmt.setString(4, currentUser.getGoal());
+            stmt.setString(5, currentUser.getExperience());
+            System.out.println("Enter getRecommendedExercises 4" );
+            ResultSet rs = stmt.executeQuery();
+            System.out.println("Enter getRecommendedExercises 5" );
+            while (rs.next()) {
+                String ageRange = rs.getString("age_range");
+                if (ageFits(currentUser.getDateOfBirth(), ageRange)) {
+                    Exercise ex = new Exercise();
+                    ex.setExerciseId(rs.getInt("ExerciseID"));
+                    System.out.println("Enter getRecommendedExercises 6" );
+                    ex.setExerciseTitle(rs.getString("exerciseTitle"));
+                    recommended.add(ex);
+                    System.out.println("Enter getRecommendedExercises 4" );
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error fetching recommended exercises: " + e.getMessage());
+        }
+        return recommended;
+    }
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
+    }
+    private boolean ageFits(LocalDate dob, String ageRange) {
+        if (ageRange == null || ageRange.isEmpty()) {
+            return true; // No age restriction
+        }
+        System.out.println("Enter ageFit" );
+
+        LocalDate today = LocalDate.now();
+        int age = Period.between(dob, today).getYears();
+
+        if (ageRange.contains("-")) {
+            String[] parts = ageRange.split("-");
+            int min = Integer.parseInt(parts[0].trim());
+            int max = Integer.parseInt(parts[1].trim());
+            return age >= min && age <= max;
+        } else if (ageRange.endsWith("+")) {
+            int min = Integer.parseInt(ageRange.substring(0, ageRange.length() - 1).trim());
+            return age >= min;
+        }
+        return false; // Default to false if format is unrecognized
+    }
