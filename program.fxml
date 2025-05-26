@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="507.0" prefWidth="1500.0" spacing="20" stylesheets="@program_style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.uprising.Program.ProgramController">
+
+    <!-- Program Grid -->
+    <ScrollPane fitToWidth="true" style="-fx-background-color: none;" styleClass="scroll-pane">
+        <FlowPane fx:id="programGrid" alignment="CENTER" hgap="20" prefHeight="390.0" prefWidth="1446.0" styleClass="grid" vgap="20" />
+    </ScrollPane>
+</VBox>
