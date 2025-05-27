@@ -1,0 +1,66 @@
+.root {
+    -fx-background-color: linear-gradient(to right, rgba(102, 102, 255, 0.4), rgba(0, 0, 0, 0.53));
+    -fx-font-family: "Arial";
+}
+
+.header {
+    -fx-background-color: rgba(0, 0, 0, 0.8);
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 5);
+}
+
+.header-title {
+    -fx-font-size: 28px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.nav-button {
+    -fx-background-color: #66BBA8;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8 20;
+    -fx-background-radius: 25;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: derive(#66BBA8, 20%);
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 20;
+}
+
+
+.grid {
+    -fx-padding: 20;
+    -fx-background-color: rgb(26, 26, 55);
+}
+
+.program-card {
+    -fx-background-color: linear-gradient(to bottom right, #6666FF, #66BBA8);
+    -fx-background-radius: 15;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0, 0, 5);
+    -fx-pref-width: 250;
+    -fx-pref-height: 150;
+    -fx-cursor: hand;
+}
+
+.program-card:hover {
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.card-title {
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.card-detail {
+    -fx-font-size: 14px;
+    -fx-text-fill: #e0e0e0;
+}
