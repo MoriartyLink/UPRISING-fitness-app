@@ -1,0 +1,85 @@
+/* GridPane (calendar container) */
+#calendarGrid {
+    -fx-background-color: #1C2526; /* Dark background like the image */
+    -fx-background-radius: 20;
+    -fx-padding: 10;
+}
+
+/* Calendar cell (StackPane) */
+.calendar-cell {
+    -fx-alignment: center;
+    -fx-pref-height: 50px; /* Slightly larger for circular buttons */
+    -fx-pref-width: 50px;
+}
+
+/* Day label (circular button) */
+.day-label {
+    -fx-background-color: #2A2E2F; /* Darker gray for day cells */
+    -fx-background-radius: 50; /* Circular shape */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-pref-height: 40px; /* Circular button size */
+    -fx-pref-width: 40px;
+    -fx-border-radius: 50;
+    -fx-border-width: 0;
+}
+
+/* Highlight for current day */
+.current-day .day-label {
+    -fx-border-color: #FF5722; /* Orange border like the image */
+    -fx-border-width: 2;
+    -fx-border-radius: 50;
+}
+
+/* Inactive days (from other months) */
+.inactive-day .day-label {
+    -fx-text-fill: #666666; /* Faded gray */
+    -fx-background-color: #2A2E2F;
+    -fx-opacity: 0.5;
+}
+
+/* Header labels (SUN, MON, etc.) */
+.header-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #B0B0B0; /* Lighter gray for headers */
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+}
+
+/* Month label (March 2022) */
+#monthLabel {
+    -fx-background-color: transparent; /* Remove background for cleaner look */
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* Navigation buttons */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Mode buttons (Workout, Challenge, Program) */
+.mode-button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 40px;
+    -fx-background-radius: 10;
+}
+
+/* Highlight for days with progress (no longer needed as a separate class, but kept for consistency) */
+.progress-highlight {
+    -fx-fill: #FF5722; /* Orange dot (now replaced by full cell highlight) */
+}
+
+/* History pane */
+#historyPane {
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-background-radius: 20;
+}
