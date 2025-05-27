@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="20" style="-fx-background-color: rgb(50, 58, 142);" stylesheets="@programdetail_style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.uprising.Program.ProgramDetailController">
+
+    <!-- Navigation Bar -->
+    <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: none;" styleClass="nav-bar">
+        <Button onAction="#handleBack" styleClass="nav-button" text="Back" />
+        <Label fx:id="programTitle" styleClass="title-label" text="Program Details" />
+    </HBox>
+
+    <!-- Main Content -->
+    <ScrollPane fitToWidth="true" style="-fx-background-color: rgb(50, 58, 142);" styleClass="scroll-pane">
+        <VBox alignment="CENTER" spacing="30" style="-fx-background-color: rgb(50, 58, 142);" styleClass="content-container">
+            <!-- Program Overview -->
+            <StackPane styleClass="card premium-card">
+                <Rectangle arcHeight="20" arcWidth="20" height="250" styleClass="card-background" width="700">
+               <effect>
+                  <DropShadow height="73.64" radius="33.6875" spread="0.08" width="63.11">
+                     <color>
+                        <Color opacity="0.3989361822605133" />
+                     </color>
+                  </DropShadow>
+               </effect></Rectangle>
+                <VBox alignment="CENTER" prefHeight="250.0" prefWidth="609.0" spacing="15" styleClass="card-content">
+                    <Label fx:id="programName" styleClass="card-title" />
+                    <Label fx:id="programDuration" styleClass="card-subtitle" />
+                    <Label fx:id="programExplanation" styleClass="card-desc" wrapText="true" />
+                    <HBox alignment="CENTER" spacing="20">
+                        <Label fx:id="programGoal" styleClass="info-label" />
+                        <Label fx:id="programLevel" styleClass="info-label" />
+                        <Label fx:id="programGender" styleClass="info-label" />
+                    </HBox>
+                    <Button onAction="#showSchedule" styleClass="action-button" text="Program Schedule">
+                  <font>
+                     <Font name="System Bold Italic" size="27.0" />
+                  </font></Button>
+                </VBox>
+            </StackPane>
+
+            <!-- Exercise List -->
+            <VBox alignment="CENTER" spacing="15">
+                <Label styleClass="section-title" text="Exercises" />
+                <VBox fx:id="exerciseList" alignment="CENTER" spacing="10" />
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</VBox>
