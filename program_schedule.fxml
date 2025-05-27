@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+
+<VBox  xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="project.uprising.Program.ScheduleController" spacing="10" stylesheets="@programSchedule_style.css">
+
+    <HBox alignment="CENTER" spacing="20">
+        <Button text="Previous" onAction="#previousMonth" styleClass="nav-button"/>
+        <Label fx:id="monthLabel" styleClass="header-label"/>
+        <Button text="Next" onAction="#nextMonth" styleClass="nav-button"/>
+    </HBox>
+    <GridPane fx:id="calendarGrid" hgap="10" vgap="10"/>
+</VBox>
