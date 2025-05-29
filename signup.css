@@ -1,0 +1,42 @@
+.label-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold ,italic;
+}
+
+.text-field, .password-field {
+    -fx-background-color: #444444;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: grey;
+}
+.vbox-container {
+    -fx-background-color: rgba(49, 49, 49, 0.3);
+    -fx-background-radius: 20;
+}
+
+.combo-box {
+    -fx-background-color: #444444;
+    -fx-text-fill: white;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #444444;
+    -fx-text-fill: white;
+}
+
+.combo-box .list-cell:selected {
+    -fx-background-color: #6666FF;
+}
+
+.button {
+    -fx-background-color: #6666FF;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #644ef3;
+}
+
+.errorLabel {
+    -fx-background-color: #e40f2f
+}
