@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="900.0" prefWidth="1650.0" stylesheets="@myEquipmentStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.uprising.SignUp_Login.SignUpMyEquipmentsController">
+    <children>
+        <AnchorPane prefHeight="933.0" prefWidth="1650.0" style="-fx-background-color: transparent;">
+            <children>
+                <!-- Main Content Area -->
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="138.0" layoutY="4.0" pannable="true" prefHeight="900.0" prefWidth="1605.0" style="-fx-background-color: transparent; -fx-background: transparent;" AnchorPane.leftAnchor="138.0" AnchorPane.rightAnchor="-23.0" AnchorPane.topAnchor="4.0">
+                    <content>
+                        <VBox alignment="TOP_CENTER" prefHeight="926.0" prefWidth="1630.0" spacing="30" style="-fx-background-color: transparent; -fx-padding: 30;">
+                            <children>
+                                <!-- Header -->
+                                <Label prefHeight="78.0" prefWidth="413.0" style="-fx-background-color: rgba(29, 19, 64, 0.8); -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 5);" text="My Equipment" textFill="#F2F2F2">
+                                    <font><Font name="System Bold" size="32.0" /></font>
+                                    <effect><Glow level="0.63" /></effect>
+                                </Label>
+
+                                <!-- Small Weights Card -->
+                                <VBox spacing="20" style="-fx-background-color: rgba(48, 48, 124, 0.58); -fx-background-radius: 20; -fx-padding: 25; -fx-effect: innershadow(gaussian, rgba(164, 128, 242, 0.2), 10, 0, 0, 0);">
+                                    <children>
+                                        <Label text="Small Weights" textFill="#F2F2F2">
+                                            <font><Font name="System Bold" size="26.0" /></font>
+                                        </Label>
+                                        <!-- Dumbbells -->
+                                        <HBox alignment="CENTER_LEFT" spacing="25">
+                                            <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                                                <image><Image url="@myEquipment/dumbbell.png" /></image>
+                                            </ImageView>
+                                            <Label text="Dumbbells" textFill="#F2F2F2">
+                                                <font><Font size="20.0" /></font>
+                                            </Label>
+                                            <CheckBox fx:id="dumbbellsCheckBox" style="-fx-text-fill: #F2F2F2;" />
+                                            <HBox alignment="CENTER" spacing="15" style="-fx-background-color: rgba(29, 19, 64, 0.5); -fx-background-radius: 15; -fx-padding: 10;">
+                                                <children>
+                                                    <ToggleButton fx:id="dumbbells2_5" style="-fx-background-radius: 12;" text="2.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="dumbbells5" style="-fx-background-radius: 12;" text="5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="dumbbells7_5" style="-fx-background-radius: 12;" text="7.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="dumbbells10" style="-fx-background-radius: 12;" text="10 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="dumbbells12_5" style="-fx-background-radius: 12;" text="12.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="dumbbells15" style="-fx-background-radius: 12;" text="15 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="dumbbells17_5" style="-fx-background-radius: 12;" text="17.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="dumbbells20" style="-fx-background-radius: 12;" text="20 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                </children>
+                                            </HBox>
+                                        </HBox>
+                                        <!-- Kettlebells -->
+                                        <HBox alignment="CENTER_LEFT" spacing="25">
+                                            <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                                                <image><Image url="@myEquipment/kettlebell.png" /></image>
+                                            </ImageView>
+                                            <Label text="Kettlebells" textFill="#F2F2F2">
+                                                <font><Font size="20.0" /></font>
+                                            </Label>
+                                            <CheckBox fx:id="kettlebellsCheckBox" style="-fx-text-fill: #F2F2F2;" />
+                                            <HBox alignment="CENTER" spacing="15" style="-fx-background-color: rgba(29, 19, 64, 0.5); -fx-background-radius: 15; -fx-padding: 10;">
+                                                <children>
+                                                    <ToggleButton fx:id="kettlebells2_5" style="-fx-background-radius: 12;" text="2.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="kettlebells5" style="-fx-background-radius: 12;" text="5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="kettlebells7_5" style="-fx-background-radius: 12;" text="7.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="kettlebells10" style="-fx-background-radius: 12;" text="10 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="kettlebells12_5" style="-fx-background-radius: 12;" text="12.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="kettlebells15" style="-fx-background-radius: 12;" text="15 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="kettlebells17_5" style="-fx-background-radius: 12;" text="17.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="kettlebells20" style="-fx-background-radius: 12;" text="20 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                </children>
+                                            </HBox>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+
+                                <!-- Other Equipment Card -->
+                                <VBox fx:id="otherequipmentContainner" spacing="20" style="-fx-background-color: rgba(48, 48, 124, 0.58); -fx-background-radius: 20; -fx-padding: 25; -fx-effect: innershadow(gaussian, rgba(164, 128, 242, 0.2), 10, 0, 0, 0);">
+                                    <children>
+                                        <Label text="Other Equipment" textFill="#F2F2F2">
+                                            <font><Font name="System Bold" size="26.0" /></font>
+                                        </Label>
+                                        <!-- Barbells -->
+                                        <HBox alignment="CENTER_LEFT" spacing="25">
+                                            <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                                                <image><Image url="@myEquipment/barbells.png" /></image>
+                                            </ImageView>
+                                            <Label text="Barbells" textFill="#F2F2F2">
+                                                <font><Font size="20.0" /></font>
+                                            </Label>
+                                            <CheckBox fx:id="barbellsCheckBox" style="-fx-text-fill: #F2F2F2;">
+                                                <HBox.margin><Insets left="80.0" /></HBox.margin>
+                                            </CheckBox>
+                                            <HBox alignment="CENTER" spacing="15" style="-fx-background-color: rgba(29, 19, 64, 0.5); -fx-background-radius: 15; -fx-padding: 10;">
+                                                <children>
+                                                    <ToggleButton fx:id="barbells2_5" style="-fx-background-radius: 12;" text="2.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="barbells5" style="-fx-background-radius: 12;" text="5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="barbells7_5" style="-fx-background-radius: 12;" text="7.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="barbells10" style="-fx-background-radius: 12;" text="10 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="barbells12_5" style="-fx-background-radius: 12;" text="12.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="barbells15" style="-fx-background-radius: 12;" text="15 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="barbells17_5" style="-fx-background-radius: 12;" text="17.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="barbells20" style="-fx-background-radius: 12;" text="20 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                </children>
+                                            </HBox>
+                                        </HBox>
+                                        <!-- EZ Bar -->
+                                        <HBox alignment="CENTER_LEFT" spacing="25">
+                                            <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                                                <image><Image url="@myEquipment/Ezbar.png" /></image>
+                                            </ImageView>
+                                            <Label text="EZ Bar" textFill="#F2F2F2">
+                                                <font><Font size="20.0" /></font>
+                                            </Label>
+                                            <CheckBox fx:id="ezBarCheckBox" style="-fx-text-fill: #F2F2F2;">
+                                                <HBox.margin><Insets left="95.0" /></HBox.margin>
+                                            </CheckBox>
+                                            <HBox alignment="CENTER" spacing="15" style="-fx-background-color: rgba(29, 19, 64, 0.5); -fx-background-radius: 15; -fx-padding: 10;">
+                                                <children>
+                                                    <ToggleButton fx:id="ezbar2_5" style="-fx-background-radius: 12;" text="2.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="ezbar5" style="-fx-background-radius: 12;" text="5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="ezbar7_5" style="-fx-background-radius: 12;" text="7.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="ezbar10" style="-fx-background-radius: 12;" text="10 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="ezbar12_5" style="-fx-background-radius: 12;" text="12.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="ezbar15" style="-fx-background-radius: 12;" text="15 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="ezbar17_5" style="-fx-background-radius: 12;" text="17.5 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="ezbar20" style="-fx-background-radius: 12;" text="20 kg" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                </children>
+                                            </HBox>
+                                        </HBox>
+                                        <!-- Resistance Bands -->
+                                        <HBox alignment="CENTER_LEFT" spacing="25">
+                                            <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                                                <image><Image url="@myEquipment/resistanceband.png" /></image>
+                                            </ImageView>
+                                            <Label text="Resistance Bands" textFill="#F2F2F2">
+                                                <font><Font size="20.0" /></font>
+                                            </Label>
+                                            <CheckBox fx:id="resistanceBandsCheckBox" style="-fx-text-fill: #F2F2F2;" />
+                                            <HBox alignment="CENTER" spacing="15" style="-fx-background-color: rgba(29, 19, 64, 0.5); -fx-background-radius: 15; -fx-padding: 10;">
+                                                <children>
+                                                    <ToggleButton fx:id="resistanceXXXLight" style="-fx-background-radius: 12; -fx-background-color: #E3C800;" text="XXX Light">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="resistanceExtraLight" style="-fx-background-radius: 12; -fx-background-color: orange;" text="Extra Light">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="resistanceLight" style="-fx-background-radius: 12; -fx-background-color: red;" text="Light" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="resistanceMedium" style="-fx-background-radius: 12; -fx-background-color: #3399FF;" text="Medium" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="resistanceHeavy" style="-fx-background-radius: 12; -fx-background-color: green;" text="Heavy" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="resistanceExtraHeavy" style="-fx-background-radius: 12; -fx-background-color: black;" text="Extra Heavy" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="resistanceXXHeavy" style="-fx-background-radius: 12; -fx-background-color: purple;" text="XX Heavy" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                    <ToggleButton fx:id="resistanceXXXHeavy" style="-fx-background-radius: 12; -fx-background-color: grey;" text="XXX Heavy" textFill="#F2F2F2">
+                                                        <font><Font size="14.0" /></font>
+                                                    </ToggleButton>
+                                                </children>
+                                            </HBox>
+                                        </HBox>
+                                        <!-- Bench -->
+                                        <HBox alignment="CENTER_LEFT" spacing="25">
+                                            <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                                                <image><Image url="@myEquipment/bench.png" /></image>
+                                            </ImageView>
+                                            <Label text="Bench" textFill="#F2F2F2">
+                                                <font><Font size="20.0" /></font>
+                                            </Label>
+                                            <CheckBox fx:id="benchCheckBox" style="-fx-text-fill: #F2F2F2;">
+                                                <HBox.margin><Insets left="96.0" /></HBox.margin>
+                                            </CheckBox>
+                                        </HBox>
+                                        <!-- Body Weight -->
+                                        <HBox alignment="CENTER_LEFT" spacing="25">
+                                            <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                                                <!-- Uncomment and fix path if needed: <image><Image url="/project/uprising/myEquipment/bodyweight.png" /></image> -->
+                                            </ImageView>
+                                            <Label text="Body Weight" textFill="#F2F2F2">
+                                                <font><Font size="20.0" /></font>
+                                            </Label>
+                                            <CheckBox fx:id="bodyWeightCheckBox" style="-fx-text-fill: #F2F2F2;">
+                                                <HBox.margin><Insets left="30.0" /></HBox.margin>
+                                            </CheckBox>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+                <!-- Buttons -->
+                <VBox alignment="TOP_CENTER" layoutX="1197.0" layoutY="-25.0" prefHeight="238.0" prefWidth="522.0" style="-fx-background-radius: 0 20 20 0; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 5, 0);">
+                    <children>
+                        <Label style="-fx-padding: 20;" textFill="#F2F2F2">
+                            <font><Font name="System Bold" size="24.0" /></font>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="468.0" spacing="50.0">
+                            <children>
+                                <Button fx:id="SubmitBtn" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="50.0" prefWidth="165.0" style="-fx-background-color: #445EF2; -fx-background-radius: 15;" text="Submit" textFill="#F2F2F2">
+                                    <font><Font name="System Bold" size="16.0" /></font>
+                                    <effect><DropShadow color="rgba(0,0,0,0.2)" radius="5" /></effect>
+                                    <tooltip><Tooltip text="Save your equipment selections" /></tooltip>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
