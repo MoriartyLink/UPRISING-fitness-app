@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+
+<BorderPane prefHeight="510.0" prefWidth="1481.0" style="-fx-background-color: rgba(44, 49, 136, 0.43);" stylesheets="@workout_style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.uprising.WorkoutController">
+   <top>
+      <VBox prefHeight="514.0" prefWidth="1482.0" spacing="10" style="-fx-padding: 10;">
+         <children>
+            <Pane fx:id="bodyPane" prefHeight="503.0" prefWidth="1461.0">
+               <children>
+                  <ImageView fx:id="bodyImage" fitHeight="433.0" fitWidth="660.0" layoutX="-6.0" layoutY="51.0" preserveRatio="true">
+                    
+                  </ImageView>
+                  <!-- Toggle Buttons for Muscle Groups -->
+                  <ToggleButton fx:id="btnBackMuscle" layoutX="274.0" layoutY="188.0" onAction="#showExercises" styleClass="muscle-button" text="Back" />
+                  <ToggleButton fx:id="btnBicep" layoutX="12.0" layoutY="96.0" onAction="#showExercises" styleClass="muscle-button" text="Bicep" />
+                  <ToggleButton fx:id="btnChest" layoutX="43.0" layoutY="29.0" onAction="#showExercises" styleClass="muscle-button" text="Chest" />
+                  <ToggleButton fx:id="btnShoulder" layoutX="241.0" layoutY="14.0" onAction="#showExercises" styleClass="muscle-button" text="Shoulder" />
+                  <ToggleButton fx:id="btnUpperBack" layoutX="278.0" layoutY="73.0" onAction="#showExercises" styleClass="muscle-button" text="Upper Back" />
+                  <ToggleButton fx:id="btnLowerBack" layoutX="247.0" layoutY="252.0" onAction="#showExercises" styleClass="muscle-button" text="Lower Back" textFill="#6666ff" />
+                  <ToggleButton fx:id="btnGlutes" layoutX="265.0" layoutY="311.0" onAction="#showExercises" styleClass="muscle-button" text="Glutes" />
+                  <ToggleButton fx:id="btnLeg" layoutX="19.0" layoutY="273.0" onAction="#showExercises" styleClass="muscle-button" text="Leg" />
+                  <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutX="764.0" layoutY="1.0" prefHeight="468.0" prefWidth="702.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
+                     <content>
+                        <VBox fx:id="exerciseList" alignment="CENTER" prefHeight="736.0" prefWidth="687.0" spacing="15" />
+                     </content>
+                  </ScrollPane>
+                  <ToggleButton fx:id="btnBicep1" layoutX="290.0" layoutY="124.0" onAction="#showExercises" prefHeight="36.0" prefWidth="76.0" styleClass="muscle-button" text="Tricep" />
+                  <Line endX="337.6429748535156" endY="144.0" layoutX="29.0" layoutY="120.0" startX="445.7333679199219" startY="60.066680908203125" stroke="#6666ff" strokeWidth="4.0" />
+                  <Line endX="89.06665802001953" endY="147.13333129882812" layoutX="32.0" layoutY="130.0" startX="41.06665802001953" startY="171.66665649414062" stroke="#6666ff" strokeWidth="4.0" />
+                  <Line endX="443.20001220703125" endY="-8.599998474121094" layoutX="32.0" layoutY="130.0" startX="365.6429748535156" startY="-33.70001220703125" stroke="#6666ff" strokeWidth="4.0" />
+                  <Line endX="425.2000427246094" endY="82.39999389648438" layoutX="42.0" layoutY="140.0" startX="301.2000427246094" startY="191.20001220703125" stroke="#6666ff" strokeWidth="4.0" />
+                  <Line endX="208.39999389648438" endY="-81.60000610351562" layoutX="42.0" layoutY="140.0" startX="164.39999389648438" startY="-44.20001220703125" stroke="#6666ff" strokeWidth="4.0" />
+                  <Line endX="75.06665802001953" endY="-36.733360290527344" layoutX="42.0" layoutY="140.0" startX="53.199989318847656" startY="-64.39999389648438" stroke="#6666ff" strokeWidth="4.0" />
+                  <Line endX="301.8000183105469" endY="71.60000610351562" layoutX="39.0" layoutY="130.0" startX="434.06671142578125" startY="29.800003051757812" stroke="#6666ff" strokeWidth="4.0" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>
