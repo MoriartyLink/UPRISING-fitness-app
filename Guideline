@@ -1,0 +1,139 @@
+Here’s a concise, professional **README-style User Guide** for your project: **"Personalized Coaching System at Home"** – ready for GitHub, documentation, or software packaging.
+
+---
+
+# 💪 Personalized Coaching System at Home
+
+A JavaFX-based desktop fitness app tailored for personal training, goal tracking, and challenge progression — all from the comfort of your home.
+
+---
+
+## 📥 Installation
+
+### Requirements:
+
+* Java JDK 11+
+* JavaFX SDK
+* MySQL Server
+* Maven
+
+### Steps:
+
+1. **Clone or Download** the repository.
+2. Import the project into your IDE (preferably IntelliJ IDEA or Eclipse).
+3. Configure your MySQL database using the provided SQL schema.
+4. Update database credentials in the project’s DB utility class.
+5. Build with Maven:
+
+   ```bash
+   mvn clean install
+   ```
+6. Run the application:
+
+   ```bash
+   mvn javafx:run
+   ```
+
+---
+
+## 👤 Getting Started (User Flow)
+
+### 1. **Signup/Login**
+
+* New users must register with age validation (minimum: 15 years).
+* Existing users can log in using their email and password.
+
+### 2. **Profile Setup**
+
+* Enter height (supports ft/in), weight (kg/lb), and goal type:
+
+  * Build Muscle
+  * Weight Loss
+  * Improve Health
+  * Strength or Sport Performance
+
+### 3. **Main Dashboard**
+
+* Features three main options:
+
+  * **Workouts**: Daily routines
+  * **Challenges**: Short-term tasks (e.g., “10 Push-ups Daily”)
+  * **Programs**: Long-term routines
+
+---
+
+## 🧠 Key Features
+
+### 🏋️ Workout Panel
+
+* Muscle group selection with interactive body map
+* Equipment-aware exercise display (locked if unavailable)
+* EXP system to track progress and restrict abuse (e.g., repeated clicks)
+
+### 🏆 Challenge Panel
+
+* Join, customize, or remove challenges
+* View detailed requirements and benefits
+* Sub-tracking and progress bars for each task
+
+### 📊 Progress Frame
+
+* Realtime tracking for workout/challenge history
+* Progress cards and weekly line charts
+
+### 🧮 BMI Calculator
+
+* Converts weight units and calculates BMI with visual risk indicators
+
+### 🧠 Knowledge Box
+
+* Fitness education and daily health tips
+
+---
+
+## 🗄️ Database Schema (MySQL)
+
+* `users`: Stores profile data
+* `workouts`: Muscle group, skill level, instructions
+* `challenges`: Name, duration, min/day, progress
+* `programs`: Long-term goals and tracking
+
+---
+
+## 🧪 Testing & Quality
+
+* Input validation with JavaFX Alerts
+* JUnit tests for logic & database interaction
+* Real-time UI feedback (hover effects, error messages)
+
+---
+
+## 🔮 Planned Enhancements
+
+* Android/iOS version (JavaFX mobile or Flutter)
+* Lightweight video demos for exercises
+* AI-powered recommendations
+* Wearable device sync (heart rate, steps)
+* Community leaderboard & daily goals
+* Multi-language support
+
+---
+
+## 🙌 Team Members (MIIT - 2024-2025)
+
+| Name              | Role                         |
+| ----------------- | ---------------------------- |
+| Min Thu Khaing    | Project Lead, Testing, Docs  |
+| Naing Myo Htet    | Core UI/UX Developer         |
+| Myint Myat Wi Yan | Content & Database Developer |
+| Kaung Khant Kyaw  | Debugger                     |
+
+---
+
+## 📘 License
+
+This project is academic and open-source. You are free to use and extend with appropriate credit to the original authors.
+
+---
+
+Let me know if you want this saved into a `README.md` file or packaged for GitHub!
